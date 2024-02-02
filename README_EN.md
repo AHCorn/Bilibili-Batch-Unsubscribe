@@ -2,7 +2,7 @@
 
 # 🔨 Bilibili-Batch-Unsubscribe
 
-### <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/">Simplified Chinese /  English </a> 
+### <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/">Simplified Chinese </a>  /  English 
 
 Batch manage Bilibili favorites and subscriptions, enabling one-click unsubscribe for all subscriptions.
 
@@ -14,10 +14,6 @@ Simplify Bilibili favorites and subscriptions management with one-click unsubscr
 
 <br>
 
-## 🗨 Musings
-Why automatically subscribe to collections when adding to favorites! I often see content in the update list that I'm not interested in...
-
-So, this script was born, whether it's managing existing collections or directly unsubscribing from all collections in bulk, it's possible~
 
 <br>
 
@@ -46,6 +42,13 @@ So, this script was born, whether it's managing existing collections or directly
 
 <br>
 
+## 🗨 Chit-chat 
+Why automatically subscribe to collections when adding to favorites! I often see content in the update list that I'm not interested in...
+
+So, this script was born, whether it's managing existing collections or directly unsubscribing from all collections in bulk, it's possible~
+
+<br>
+
 ## 📝 To-Do
 | 🔔 Not Done | ✅ Done |
 | -------- | -------- |
@@ -53,5 +56,4 @@ So, this script was born, whether it's managing existing collections or directly
 |   Adapt to mobile UI     |          |
 |      Improve prompts during bulk unsubscribe   |          |
 
-<br>
 
