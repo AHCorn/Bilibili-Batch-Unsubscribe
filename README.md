@@ -8,7 +8,7 @@
 
 批量管理哔哩哔哩收藏及订阅，可实现一键取消所有订阅。
 
-Batch manage Bilibili favorites and subscriptions,enabling one-click unsubscribe from all subscriptions.
+Simplify Bilibili favorites and subscriptions management with one-click unsubscribe.
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
 
