@@ -2,7 +2,7 @@
 
 <div align="center">
 
-#  🔨 Bilibili-Batch-Unsubscribe
+#  🔨 [Bilibili-Batch-Unsubscribe](https://greasyfork.org/zh-CN/scripts/486323-%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9%E8%AE%A2%E9%98%85%E7%AE%A1%E7%90%86-%E6%89%B9%E9%87%8F%E5%8F%96%E6%B6%88%E8%AE%A2%E9%98%85%E5%90%88%E9%9B%86)
 
 ### **简体中文** / <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/blob/main/README_EN.md"> English </a> 
 
