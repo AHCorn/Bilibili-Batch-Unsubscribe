@@ -42,8 +42,8 @@ Batch manage Bilibili favorites and subscriptions,enabling one-click unsubscribe
 | 🔔 未完成 | ✅ 已完成 |
 | -------- | -------- |
 |     继续优化完善 UI    |          |
-|        |          |
-|         |          |
+|   适配手机 UI     |          |
+|      完善批量取消时的提示   |          |
 
 <br>
 
