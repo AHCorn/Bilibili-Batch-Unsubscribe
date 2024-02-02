@@ -16,13 +16,6 @@ Simplify Bilibili favorites and subscriptions management with one-click unsubscr
 
 <br>
 
-## 🗨 碎碎念
-为什么要在收藏的时候自动订阅合集！经常看到不是我想看的内容出现在更新列表里...
-
-所以这个脚本就诞生啦，无论是管理已有合集，还是直接批量取消订阅所有的合集都是可以的哦~
-
-<br>
-
 ## 🗄 预览
 
   
@@ -48,14 +41,19 @@ Simplify Bilibili favorites and subscriptions management with one-click unsubscr
 
 <br>
 
+## 🗨 碎碎念
+为什么要在收藏的时候自动订阅合集！经常看到不是我想看的内容出现在更新列表里...
+
+所以这个脚本就诞生啦，无论是管理已有合集，还是直接批量取消订阅所有的合集都是可以的哦~
+
+<br>
+
 ## 📝 待办
 | 🔔 未完成 | ✅ 已完成 |
 | -------- | -------- |
 |     继续优化完善 UI    |          |
 |   适配手机 UI     |          |
 |      完善批量取消时的提示   |          |
-
-<br>
 
 
 
