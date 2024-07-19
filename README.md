@@ -2,7 +2,7 @@
 
 # 🔨 <a href="https://greasyfork.org/zh-CN/scripts/486323-%E5%93%94%E5%93%A9%E5%93%A9%E8%AE%A2%E9%98%85%E7%AE%A1%E7%90%86-%E6%89%B9%E9%87%8F%E5%8F%96%E6%B6%88%E8%AE%A2%E9%98%85%E5%90%88%E9%9B%86" style="text-decoration: none;">Bilibili-Batch-Unsubscribe</a>
 
-### **简体中文** | <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/blob/main/README_EN.md"> English </a>
+#### **简体中文** | <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/blob/main/README_EN.md"> English </a>
 
 批量管理哔哩哔哩收藏及订阅，可实现一键取消所有订阅。
 
