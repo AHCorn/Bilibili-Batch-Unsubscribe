@@ -4,7 +4,7 @@
 
 #### **简体中文** | <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/blob/main/README_EN.md"> English </a>
 
-批量管理哔哩哔哩收藏及订阅，可实现一键取消所有订阅。
+批量管理哔哩哔哩订阅，可实现一键取消所有订阅。
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![GitHub stars](https://img.shields.io/github/stars/AHCorn/Bilibili-Batch-Unsubscribe?style=for-the-badge)
