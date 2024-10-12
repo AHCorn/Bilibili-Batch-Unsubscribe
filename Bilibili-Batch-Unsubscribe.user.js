@@ -2,7 +2,7 @@
 // @name         哔哩哔哩订阅管理 / 批量取消订阅合集
 // @author       安和（AHCorn）
 // @namespace    https://github.com/AHCorn/Bilibili-Batch-Unsubscribe
-// @version      1.0.1
+// @version      1.0.2
 // @license      MIT
 // @description  批量管理哔哩哔哩收藏及订阅，可实现一键取消所有订阅。
 // @grant        GM_registerMenuCommand
@@ -291,11 +291,11 @@
     const closeBtn = panel.querySelector('.close-btn');
     closeBtn.addEventListener('click', togglePanel);
 
-    // 全选
+    // 全选（修复筛选错误问题）
     const selectAllBtn = panel.querySelector('#select-all');
     selectAllBtn.addEventListener('click', () => {
-        const checkboxes = panel.querySelectorAll('.subscription-item input[type="checkbox"]');
-        checkboxes.forEach((checkbox) => {
+        const visibleCheckboxes = panel.querySelectorAll('.subscription-item:not([style*="display: none"]) input[type="checkbox"]');
+        visibleCheckboxes.forEach((checkbox) => {
             checkbox.checked = true;
         });
     });
