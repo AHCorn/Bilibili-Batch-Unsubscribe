@@ -4,9 +4,7 @@
 
 ### <a href="https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/">Simplified Chinese </a>  /  English 
 
-Batch manage Bilibili favorites and subscriptions, enabling one-click unsubscribe for all subscriptions.
-
-Simplify Bilibili favorites and subscriptions management with one-click unsubscribe.
+Simplify Bilibili subscriptions management with one-click unsubscribe.
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) 
 
