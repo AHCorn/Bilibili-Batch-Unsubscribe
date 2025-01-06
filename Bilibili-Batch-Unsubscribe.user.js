@@ -2,9 +2,9 @@
 // @name         哔哩哔哩订阅管理 / 批量取消订阅合集
 // @author       安和（AHCorn）
 // @namespace    https://github.com/AHCorn/Bilibili-Batch-Unsubscribe
-// @version      1.0.2
+// @version      1.0.3
 // @license      MIT
-// @description  批量管理哔哩哔哩收藏及订阅，可实现一键取消所有订阅。
+// @description  批量管理哔哩哔哩订阅，可实现一键取消所有订阅。
 // @grant        GM_registerMenuCommand
 // @grant        GM_addStyle
 // @match        https://space.bilibili.com/*/favlist*
