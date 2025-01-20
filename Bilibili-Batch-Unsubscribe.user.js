@@ -2,7 +2,7 @@
 // @name         哔哩哔哩订阅管理 / 批量取消订阅合集
 // @author       安和（AHCorn）
 // @namespace    https://github.com/AHCorn/Bilibili-Batch-Unsubscribe
-// @version      2.0-Beta
+// @version      2.1
 // @license      GPL-3.0
 // @description  批量管理哔哩哔哩订阅，可实现一键取消所有订阅。
 // @grant        GM_registerMenuCommand
@@ -512,18 +512,15 @@
         border-radius: 3px;
         overflow: hidden;
         margin: 12px 0;
+        position: relative;
     }
 
     #unsubscribe-progress .progress-bar-inner {
-        position: absolute;
-        left: 0;
-        top: 0;
         height: 100%;
-        width: 100%;
         background: linear-gradient(90deg, #00a1d6, #00b5e5);
         border-radius: 3px;
-        transform: translateX(-100%);
-        transition: transform 0.3s ease-out;
+        width: 0%;
+        transition: width 0.3s ease-out;
     }
 
     #unsubscribe-progress .progress-info {
@@ -737,6 +734,8 @@
                                 let confirmClicked = false;
                                 let retryCount = 0;
                                 const MAX_RETRIES = 3;
+                                const TIMEOUT_DURATION = 5000;
+                                let timeoutId;
 
                                 dialogObserver = new MutationObserver((mutations) => {
                                     if (unsubscribeClicked && !confirmClicked) {
@@ -749,6 +748,7 @@
                                                 const confirmBtn = dialog.querySelector('.vui_button--blue.vui_dialog--btn-confirm');
                                                 if (confirmBtn) {
                                                     confirmClicked = true;
+                                                    clearTimeout(timeoutId);
                                                     setTimeout(() => {
                                                         try {
                                                             confirmBtn.click();
@@ -786,14 +786,7 @@
                                         moreIcon = originalItem.querySelector('.sic-BDC-more_vertical_fill');
                                         if (moreIcon && window.getComputedStyle(moreIcon).display !== 'none') {
                                             iconVisible = true;
-                                            moreIcon.dispatchEvent(new Event('mouseenter', {
-                                                bubbles: false,
-                                                cancelable: true
-                                            }));
-                                            moreIcon.dispatchEvent(new Event('mouseover', {
-                                                bubbles: true,
-                                                cancelable: true
-                                            }));
+                                            await simulateMouseEvents(moreIcon, ['mouseenter', 'mouseover']);
                                         }
                                     }
 
@@ -825,7 +818,7 @@
                                     } catch (error) {
                                         if (retryCount < MAX_RETRIES) {
                                             retryCount++;
-                                            await new Promise(resolve => setTimeout(resolve, 200));
+                                            await new Promise(resolve => setTimeout(resolve, 500));
                                             await trySimulateEvents();
                                         } else {
                                             reject('模拟鼠标事件失败，已达到最大重试次数');
@@ -835,13 +828,19 @@
 
                                 await trySimulateEvents();
 
-                                setTimeout(() => {
+                                timeoutId = setTimeout(() => {
                                     if (!confirmClicked) {
                                         observer.disconnect();
                                         dialogObserver.disconnect();
-                                        reject('操作超时');
+                                        if (retryCount < MAX_RETRIES) {
+                                            retryCount++;
+                                            console.log(`重试第 ${retryCount} 次...`);
+                                            trySimulateEvents();
+                                        } else {
+                                            reject('操作超时，已达到最大重试次数');
+                                        }
                                     }
-                                }, 3000);
+                                }, TIMEOUT_DURATION);
                             });
 
                             await new Promise(resolve => setTimeout(resolve, 500));
@@ -1139,7 +1138,7 @@
 
             const percentage = Math.round((current / total) * 100);
 
-            progressBar.style.transform = `translateX(${percentage - 100}%)`;
+            progressBar.style.width = `${percentage}%`;
             progressCount.textContent = `${current}/${total}`;
             progressPercentage.textContent = `${percentage}%`;
         });
