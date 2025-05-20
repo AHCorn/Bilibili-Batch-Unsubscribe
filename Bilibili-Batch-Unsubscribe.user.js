@@ -345,6 +345,15 @@
         box-shadow: 0 4px 12px rgba(251, 114, 153, 0.3);
     }
 
+    #bilibili-batch-unsubscribe-panel #export-csv {
+        background: #00c4a7;
+        box-shadow: 0 2px 8px rgba(0, 196, 167, 0.2);
+    }
+    #bilibili-batch-unsubscribe-panel #export-csv:hover {
+        background: #00d7b9;
+        box-shadow: 0 4px 12px rgba(0, 196, 167, 0.3);
+    }
+
     #bilibili-batch-unsubscribe-panel .progress-container {
         margin-top: 20px;
         padding: 20px;
@@ -650,6 +659,7 @@
             <button class="btn" id="select-all">全选</button>
             <button class="btn" id="deselect-all">取消全选</button>
             <button class="btn" id="unsubscribe-selected">取消订阅</button>
+            <button class="btn" id="export-csv">导出CSV</button>
         </div>
         <div class="progress-container">
             <div class="progress-title">正在取消订阅</div>
@@ -1248,5 +1258,63 @@
     });
 
     GM_registerMenuCommand('订阅管理', togglePanel);
+
+    function exportToCSV() {
+        try {
+            console.log('开始导出CSV');
+            const items = document.querySelectorAll('.subscription-item');
+            if (items.length === 0) {
+                alert('没有可导出的订阅内容！');
+                return;
+            }
+
+            const csvContent = [
+                ['标题', '合集ID'].join(','),
+                ...Array.from(items).map((item) => {
+                    const title = item.querySelector('label')?.textContent?.trim() || '未知标题';
+                    const fid = item.querySelector('input')?.value || '未知ID';
+                    return `"${title.replace(/"/g, '""')}",${fid}`;
+                })
+            ].join('\n');
+
+            if (!csvContent || csvContent.trim().length === 0) {
+                throw new Error('CSV 内容为空');
+            }
+
+            const filename = `哔哩订阅列表_${new Date().toISOString().slice(0,10).replace(/-/g,'')}.csv`;
+
+            if (typeof GM_download !== 'undefined') {
+                const dataUrl = `data:text/csv;charset=utf-8,${encodeURIComponent("\uFEFF" + csvContent)}`;
+                GM_download({
+                    url: dataUrl,
+                    name: filename,
+                    saveAs: true,
+                    onload: () => console.log('GM下载完成')
+                });
+            } else {
+                const blob = new Blob(["\uFEFF" + csvContent], { type: 'text/csv;charset=utf-8' });
+                const url = URL.createObjectURL(blob);
+                const link = document.createElement('a');
+                link.href = url;
+                link.download = filename;
+                link.style.display = 'none';
+                document.body.appendChild(link);
+                link.click();
+                setTimeout(() => {
+                    document.body.removeChild(link);
+                    URL.revokeObjectURL(url);
+                }, 5000);
+            }
+        } catch (error) {
+            console.error('导出CSV失败:', error);
+            alert(`导出失败: ${error.message}`);
+        }
+    }
+
+    document.body.addEventListener('click', (e) => {
+        if (e.target && e.target.id === 'export-csv') {
+            exportToCSV();
+        }
+    });
 })();
 
