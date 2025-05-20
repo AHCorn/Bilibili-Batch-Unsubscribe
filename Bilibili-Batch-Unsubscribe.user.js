@@ -7,6 +7,7 @@
 // @description  批量管理哔哩哔哩订阅，可实现一键取消所有订阅。
 // @grant        GM_registerMenuCommand
 // @grant        GM_addStyle
+// @grant        GM_download
 // @match        https://space.bilibili.com/*/favlist*
 // @run-at       document-end
 // @downloadURL https://github.com/AHCorn/Bilibili-Batch-Unsubscribe/raw/refs/heads/main/Bilibili-Batch-Unsubscribe.user.js
