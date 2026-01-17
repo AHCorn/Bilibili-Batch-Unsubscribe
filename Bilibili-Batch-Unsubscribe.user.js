@@ -2,7 +2,7 @@
 // @name         哔哩哔哩订阅管理 / 批量取消订阅合集
 // @author       安和（AHCorn）
 // @namespace    https://github.com/AHCorn/Bilibili-Batch-Unsubscribe
-// @version      2.1
+// @version      2.2
 // @license      GPL-3.0
 // @description  批量管理哔哩哔哩订阅，可实现一键取消所有订阅。
 // @grant        GM_registerMenuCommand
@@ -91,13 +91,15 @@
         display: grid;
         grid-template-columns: repeat(2, 1fr);
         gap: 16px;
+        flex: 1 1 auto;
         overflow-y: auto;
+        overflow-x: hidden;
         padding: 20px;
         margin: 0;
         scrollbar-width: thin;
         scrollbar-color: rgba(0, 161, 214, 0.3) transparent;
-        max-height: calc(100% - 160px);
-        min-height: 200px;
+        min-height: 0;
+        align-content: start;
     }
 
     #bilibili-batch-unsubscribe-panel .subscription-item {
@@ -113,6 +115,9 @@
         user-select: none;
         position: relative;
         overflow: hidden;
+        height: auto;
+        min-height: 60px;
+        flex-shrink: 0;
     }
 
     #bilibili-batch-unsubscribe-panel .subscription-item:hover {
@@ -1318,4 +1323,3 @@
         }
     });
 })();
-
