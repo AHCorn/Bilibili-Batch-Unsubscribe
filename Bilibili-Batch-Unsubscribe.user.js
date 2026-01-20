@@ -2,7 +2,7 @@
 // @name         哔哩哔哩订阅管理 / 批量取消订阅合集
 // @author       安和（AHCorn）
 // @namespace    https://github.com/AHCorn/Bilibili-Batch-Unsubscribe
-// @version      2.2
+// @version      2.3
 // @license      GPL-3.0
 // @description  批量管理哔哩哔哩订阅，可实现一键取消所有订阅。
 // @grant        GM_registerMenuCommand
@@ -904,6 +904,41 @@
         }
     }
 
+    function getLoadMoreButton(scrollContainer) {
+      return scrollContainer.querySelector('.fav-collapse-more');
+    }
+
+    async function tryLoadAllSubscriptionsByClickLoadMore(scrollContainer) {
+      if (!scrollContainer) {
+        return;
+      }
+      const innerScrollContainer = scrollContainer.querySelector('.vui_sidebar');
+      let loadMoreButton = getLoadMoreButton(scrollContainer);
+      if (!loadMoreButton) {
+        return;
+      }
+
+      let currentHeight = innerScrollContainer.scrollHeight;
+      let attempts = 0;
+      const MAX_ATTEMPTS = 10;
+      while (attempts < MAX_ATTEMPTS) {
+        loadMoreButton.click();
+        await new Promise(resolve => setTimeout(resolve, 500));
+        const newHeight = innerScrollContainer.scrollHeight;
+        if (newHeight > currentHeight) {
+          currentHeight = newHeight;
+          attempts = 0;
+        } else {
+          attempts++;
+        }
+
+        loadMoreButton = getLoadMoreButton(scrollContainer);
+        if (!loadMoreButton) {
+          break;
+        }
+      }
+    }
+
     async function loadAndDisplaySubscriptions() {
         const loadingMessage = document.createElement('div');
         loadingMessage.className = 'loading-message';
@@ -918,7 +953,11 @@
             const collapseItem = targetHeader.closest('.vui_collapse_item');
 
             const scrollContainer = collapseItem.querySelector('.vui_collapse_item_content');
-            if (scrollContainer) {
+
+            if (scrollContainer && getLoadMoreButton(scrollContainer)) {
+              await tryLoadAllSubscriptionsByClickLoadMore(scrollContainer);
+            }
+            else if (scrollContainer) {
                 let lastHeight = scrollContainer.scrollHeight;
                 let attempts = 0;
                 const MAX_ATTEMPTS = 50;
